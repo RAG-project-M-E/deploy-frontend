@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
@@ -18,7 +18,7 @@ const topics = ["İş Hukuku", "Kira Hukuku", "Aile Hukuku", "Ceza Hukuku", "Tic
 
 const STORAGE_KEY = "lexdanisman_sessions"
 
-export default function ChatPage() {
+function ChatContent() {
     const searchParams = useSearchParams()
     const initialTopic = searchParams.get("topic")
 
@@ -392,6 +392,14 @@ export default function ChatPage() {
                 </div>
             </main>
         </div>
+    )
+}
+
+export default function ChatPage() {
+    return (
+        <Suspense fallback={<div className="flex h-screen items-center justify-center">Yükleniyor...</div>}>
+            <ChatContent />
+        </Suspense>
     )
 }
 
