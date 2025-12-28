@@ -44,10 +44,53 @@ export function SiteHeader() {
                         </Button>
                     </Link>
 
-                    {/* Mobile Menu Trigger - Placeholder until Sheet is ready or I simple use it */}
-                    <Button variant="ghost" size="icon" className="md:hidden">
-                        <Menu className="h-6 w-6" />
-                    </Button>
+                    {/* Mobile Menu Trigger */}
+                    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                        <SheetTrigger asChild>
+                            <Button variant="ghost" size="icon" className="md:hidden">
+                                <Menu className="h-6 w-6" />
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                            <nav className="flex flex-col gap-6 mt-10">
+                                <Link
+                                    href="/#hizmetler"
+                                    className="text-lg font-medium transition-colors hover:text-primary"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    Hizmetler
+                                </Link>
+                                <Link
+                                    href="/#hakkimizda"
+                                    className="text-lg font-medium transition-colors hover:text-primary"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    Hakkımızda
+                                </Link>
+                                <Link
+                                    href="/#sss"
+                                    className="text-lg font-medium transition-colors hover:text-primary"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    S.S.S
+                                </Link>
+                                <Link
+                                    href="/#iletisim"
+                                    className="text-lg font-medium transition-colors hover:text-primary"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    İletişim
+                                </Link>
+                                <Link
+                                    href="/danisman"
+                                    onClick={() => setIsOpen(false)}
+                                    className="mt-4"
+                                >
+                                    <Button className="w-full shadow-gold font-bold">Hemen Sor</Button>
+                                </Link>
+                            </nav>
+                        </SheetContent>
+                    </Sheet>
                 </div>
             </div>
         </header>
